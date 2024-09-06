@@ -2,7 +2,7 @@
 
 import datetime as dt
 from dataclasses import dataclass, field
-from typing import List, NamedTuple, Optional
+from typing import List, Optional
 
 import ib_async.util as util
 
@@ -176,6 +176,7 @@ class Contract:
     __str__ = __repr__
 
 
+@dataclass
 class Stock(Contract):
     def __init__(
         self, symbol: str = "", exchange: str = "", currency: str = "", **kwargs
@@ -198,6 +199,7 @@ class Stock(Contract):
         )
 
 
+@dataclass
 class Option(Contract):
     def __init__(
         self,
@@ -241,6 +243,7 @@ class Option(Contract):
         )
 
 
+@dataclass
 class Future(Contract):
     def __init__(
         self,
@@ -280,6 +283,7 @@ class Future(Contract):
         )
 
 
+@dataclass
 class ContFuture(Contract):
     def __init__(
         self,
@@ -312,6 +316,7 @@ class ContFuture(Contract):
         )
 
 
+@dataclass
 class Forex(Contract):
     def __init__(
         self,
@@ -358,6 +363,7 @@ class Forex(Contract):
         return self.symbol + self.currency
 
 
+@dataclass
 class Index(Contract):
     def __init__(
         self, symbol: str = "", exchange: str = "", currency: str = "", **kwargs
@@ -375,6 +381,7 @@ class Index(Contract):
         )
 
 
+@dataclass
 class CFD(Contract):
     def __init__(
         self, symbol: str = "", exchange: str = "", currency: str = "", **kwargs
@@ -392,6 +399,7 @@ class CFD(Contract):
         )
 
 
+@dataclass
 class Commodity(Contract):
     def __init__(
         self, symbol: str = "", exchange: str = "", currency: str = "", **kwargs
@@ -409,12 +417,14 @@ class Commodity(Contract):
         )
 
 
+@dataclass
 class Bond(Contract):
     def __init__(self, **kwargs):
         """Bond."""
         Contract.__init__(self, "BOND", **kwargs)
 
 
+@dataclass
 class FuturesOption(Contract):
     def __init__(
         self,
@@ -458,24 +468,28 @@ class FuturesOption(Contract):
         )
 
 
+@dataclass
 class MutualFund(Contract):
     def __init__(self, **kwargs):
         """Mutual fund."""
         Contract.__init__(self, "FUND", **kwargs)
 
 
+@dataclass
 class Warrant(Contract):
     def __init__(self, **kwargs):
         """Warrant option."""
         Contract.__init__(self, "WAR", **kwargs)
 
 
+@dataclass
 class Bag(Contract):
     def __init__(self, **kwargs):
         """Bag contract."""
         Contract.__init__(self, "BAG", **kwargs)
 
 
+@dataclass
 class Crypto(Contract):
     def __init__(
         self, symbol: str = "", exchange: str = "", currency: str = "", **kwargs
@@ -498,7 +512,8 @@ class Crypto(Contract):
         )
 
 
-class TagValue(NamedTuple):
+@dataclass
+class TagValue:
     tag: str
     value: str
 
@@ -522,7 +537,8 @@ class DeltaNeutralContract:
     price: float = 0.0
 
 
-class TradingSession(NamedTuple):
+@dataclass
+class TradingSession:
     start: dt.datetime
     end: dt.datetime
 
