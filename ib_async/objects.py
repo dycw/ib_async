@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass, field
 from datetime import date as date_, datetime
-from typing import List, NamedTuple, Optional, Union
+from typing import List, Optional, Union
 
 from eventkit import Event
 
@@ -212,7 +212,8 @@ class WshEventData:
     totalLimit: int = UNSET_INTEGER
 
 
-class AccountValue(NamedTuple):
+@dataclass
+class AccountValue:
     account: str
     tag: str
     value: str
@@ -220,20 +221,23 @@ class AccountValue(NamedTuple):
     modelCode: str
 
 
-class TickData(NamedTuple):
+@dataclass
+class TickData:
     time: datetime
     tickType: int
     price: float
     size: float
 
 
-class HistoricalTick(NamedTuple):
+@dataclass
+class HistoricalTick:
     time: datetime
     price: float
     size: float
 
 
-class HistoricalTickBidAsk(NamedTuple):
+@dataclass
+class HistoricalTickBidAsk:
     time: datetime
     tickAttribBidAsk: TickAttribBidAsk
     priceBid: float
@@ -242,7 +246,8 @@ class HistoricalTickBidAsk(NamedTuple):
     sizeAsk: float
 
 
-class HistoricalTickLast(NamedTuple):
+@dataclass
+class HistoricalTickLast:
     time: datetime
     tickAttribLast: TickAttribLast
     price: float
@@ -251,7 +256,8 @@ class HistoricalTickLast(NamedTuple):
     specialConditions: str
 
 
-class TickByTickAllLast(NamedTuple):
+@dataclass
+class TickByTickAllLast:
     tickType: int
     time: datetime
     price: float
@@ -261,7 +267,8 @@ class TickByTickAllLast(NamedTuple):
     specialConditions: str
 
 
-class TickByTickBidAsk(NamedTuple):
+@dataclass
+class TickByTickBidAsk:
     time: datetime
     bidPrice: float
     askPrice: float
@@ -270,12 +277,14 @@ class TickByTickBidAsk(NamedTuple):
     tickAttribBidAsk: TickAttribBidAsk
 
 
-class TickByTickMidPoint(NamedTuple):
+@dataclass
+class TickByTickMidPoint:
     time: datetime
     midPoint: float
 
 
-class MktDepthData(NamedTuple):
+@dataclass
+class MktDepthData:
     time: datetime
     position: int
     marketMaker: str
@@ -285,18 +294,21 @@ class MktDepthData(NamedTuple):
     size: float
 
 
-class DOMLevel(NamedTuple):
+@dataclass
+class DOMLevel:
     price: float
     size: float
     marketMaker: str
 
 
-class PriceIncrement(NamedTuple):
+@dataclass
+class PriceIncrement:
     lowEdge: float
     increment: float
 
 
-class PortfolioItem(NamedTuple):
+@dataclass
+class PortfolioItem:
     contract: Contract
     position: float
     marketPrice: float
@@ -307,21 +319,24 @@ class PortfolioItem(NamedTuple):
     account: str
 
 
-class Position(NamedTuple):
+@dataclass
+class Position:
     account: str
     contract: Contract
     position: float
     avgCost: float
 
 
-class Fill(NamedTuple):
+@dataclass
+class Fill:
     contract: Contract
     execution: Execution
     commissionReport: CommissionReport
     time: datetime
 
 
-class OptionComputation(NamedTuple):
+@dataclass
+class OptionComputation:
     tickAttrib: int
     impliedVol: Optional[float]
     delta: Optional[float]
@@ -333,7 +348,8 @@ class OptionComputation(NamedTuple):
     undPrice: Optional[float]
 
 
-class OptionChain(NamedTuple):
+@dataclass
+class OptionChain:
     exchange: str
     underlyingConId: int
     tradingClass: str
@@ -342,26 +358,30 @@ class OptionChain(NamedTuple):
     strikes: List[float]
 
 
-class Dividends(NamedTuple):
+@dataclass
+class Dividends:
     past12Months: Optional[float]
     next12Months: Optional[float]
     nextDate: Optional[date_]
     nextAmount: Optional[float]
 
 
-class NewsArticle(NamedTuple):
+@dataclass
+class NewsArticle:
     articleType: int
     articleText: str
 
 
-class HistoricalNews(NamedTuple):
+@dataclass
+class HistoricalNews:
     time: datetime
     providerCode: str
     articleId: str
     headline: str
 
 
-class NewsTick(NamedTuple):
+@dataclass
+class NewsTick:
     timeStamp: int
     providerCode: str
     articleId: str
@@ -369,25 +389,29 @@ class NewsTick(NamedTuple):
     extraData: str
 
 
-class NewsBulletin(NamedTuple):
+@dataclass
+class NewsBulletin:
     msgId: int
     msgType: int
     message: str
     origExchange: str
 
 
-class FamilyCode(NamedTuple):
+@dataclass
+class FamilyCode:
     accountID: str
     familyCodeStr: str
 
 
-class SmartComponent(NamedTuple):
+@dataclass
+class SmartComponent:
     bitNumber: int
     exchange: str
     exchangeLetter: str
 
 
-class ConnectionStats(NamedTuple):
+@dataclass
+class ConnectionStats:
     startTime: float
     duration: float
     numBytesRecv: int

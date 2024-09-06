@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "ib_async"
-version = "1.0.3"
+name = "ib_async_dataclass"
+version = "1.0.3rc5"
 description = "Python sync/async framework for Interactive Brokers API"
 authors = ["Ewald de Wit"]
 maintainers = ["Matt Stancliff <matt@matt.sh>"]
@@ -19,6 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 keywords = ["ibapi", "tws", "asyncio", "jupyter", "interactive", "brokers", "async", "ib_async", "ib_insync"]
+packages = [{include = "ib_async"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10"

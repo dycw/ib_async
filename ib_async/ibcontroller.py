@@ -4,7 +4,7 @@ import asyncio
 import logging
 import sys
 from contextlib import suppress
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import ClassVar
 
 from eventkit import Event
@@ -268,7 +268,7 @@ class Watchdog:
     readonly: bool = False
     account: str = ""
     raiseSyncErrors: bool = False
-    probeContract: Contract = Forex("EURUSD")
+    probeContract: Contract = field(default_factory=lambda: Forex("EURUSD"))
     probeTimeout: float = 4
 
     def __post_init__(self):
